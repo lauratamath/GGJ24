@@ -6,8 +6,7 @@ public class ScaleWithInput : MonoBehaviour
 {
 
     public AudioSource source;
-    public Vector3 minScale;
-    public Vector3 maxScale;
+    public float moveSpeed = 5f;
     public AudioInputDetection detector;
 
     public float loudnessSensibility = 100;
@@ -22,11 +21,13 @@ public class ScaleWithInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float loudness = detector.GetLoudnessFromMicrophone() * loudnessSensibility; //change the transform
+        float loudness = detector.GetLoudnessFromMicrophone() * loudnessSensibility;
 
         if (loudness < threshould)
             loudness = 0;
 
-        transform.localScale = Vector3.Lerp(minScale, maxScale, loudness);
+        // Move the object based on the loudness
+        Vector3 moveDirection = new Vector3(loudness, 0f, 0f);
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
 }
