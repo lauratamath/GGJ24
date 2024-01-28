@@ -12,7 +12,6 @@
 
 ## Aditional softwares
 - [Image generator idea](https://app.leonardo.ai/ai-generations)
-- [Image generator to expand](https://www.canva.com/)
 
 ## Sites consulted
 - [Reference video to receive microphone input](https://youtu.be/dzD0qP8viLw?si=kXqppwqWTKRPEPHd)
