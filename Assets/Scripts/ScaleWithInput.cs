@@ -31,7 +31,7 @@ public class ScaleWithInput : MonoBehaviour
 
         if (loudness < threshold)
             loudness = 0;
-
+        
         // Check sound frequency to jump
         if (loudness > jumpThreshold && !isJumping)
         {
@@ -49,11 +49,18 @@ public class ScaleWithInput : MonoBehaviour
         else
         {
             noiseStartTime = Time.time; // If there is no noise, reset the time
+            if (moveSpeed - speedIncrement > 0.0f) moveSpeed -= speedIncrement;
+        }
+
+        if (isJumping && transform.position.y <= 0.1)
+        {
+            isJumping = false;
         }
 
         // move the object with actual speed
         Vector3 moveDirection = new Vector3(loudness, 0f, 0f);
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        // transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        GetComponent<Rigidbody>().AddForce(moveDirection * moveSpeed * Time.deltaTime, ForceMode.Impulse);
     }
 
     void Jump()
@@ -61,7 +68,7 @@ public class ScaleWithInput : MonoBehaviour
         // Aplicar fuerza vertical al objeto para brincar
         GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isJumping = true;
-        StartCoroutine(ResetJumpFlag());
+        // StartCoroutine(ResetJumpFlag());
     }
 
     void IncreaseSpeed()
