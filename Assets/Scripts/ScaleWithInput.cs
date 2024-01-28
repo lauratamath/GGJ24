@@ -18,6 +18,9 @@ public class ScaleWithInput : MonoBehaviour
     public float speedIncrement = 2f;
     public float moveSpeed = 2f;
 
+
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,7 @@ public class ScaleWithInput : MonoBehaviour
         // If the sound last more than # second, it increases speed
         if (loudness > threshold)
         {
+            animator.SetBool("isMoving", true);
             if (Time.time - noiseStartTime > timeThreshold)
             {
                 IncreaseSpeed();
@@ -48,6 +52,7 @@ public class ScaleWithInput : MonoBehaviour
         }
         else
         {
+            animator.SetBool("isMoving", false);
             noiseStartTime = Time.time; // If there is no noise, reset the time
             if (moveSpeed - speedIncrement > 0.0f) moveSpeed -= speedIncrement;
         }
@@ -58,6 +63,8 @@ public class ScaleWithInput : MonoBehaviour
         }
 
         // move the object with actual speed
+
+
         Vector3 moveDirection = new Vector3(loudness, 0f, 0f);
         // transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
         GetComponent<Rigidbody>().AddForce(moveDirection * moveSpeed * Time.deltaTime, ForceMode.Impulse);
