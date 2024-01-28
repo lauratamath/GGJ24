@@ -7,6 +7,7 @@ public class Level2Manager : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject player;
+    public GameObject cameraObj;
     
     private bool isPaused;
 
@@ -30,6 +31,14 @@ public class Level2Manager : MonoBehaviour
             {
                 UnpauseMenu();
             }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (cameraObj)
+        {
+            cameraObj.transform.position = new Vector3(player.transform.position.x + 15, cameraObj.transform.position.y, cameraObj.transform.position.z);
         }
     }
 
