@@ -1,5 +1,5 @@
 # Chubbies
-![image](https://github.com/lauratamath/GGJ24/assets/46496503/5889a036-d002-43c9-af6f-4715a4656ccd)
+<img width="1149" alt="image" src="https://github.com/lauratamath/GGJ24/assets/46570760/ff822a78-b3c7-45bd-9bfd-4d806391dc58">
 
 ## Textures
 - [Ice cream](https://www.vecteezy.com/video/20329388-an-abstract-pattern-animated-with-geometric-elements-in-the-form-of-ice-cream-flakes-pink-gradient-background)
